@@ -1,0 +1,63 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+typedef struct linkList{
+  struct Node *head;
+  int size;
+};
+
+typedef struct Node{
+  struct Node *next;
+  int *a[];
+};
+
+
+void printArr(int a[],int n) 
+{ 
+    for (int i=0; i<n; i++) 
+      printf("%d ",a[i]); 
+    printf("\n"); 
+} 
+  
+// Generating permutation using Heap Algorithm 
+void heapPermutation(int a[], int size, int n,struct linkList *list) 
+{
+    if (size == 1) 
+    {
+      if(list->head->size == 0){
+	struct linkList *node = 
+	list->arr = a;
+	list->head = list;
+	list->next = NULL;
+	list->size = 1; 
+      }
+      //printf("%d",j);
+        printArr(a, n); 
+        return; 
+    } 
+  
+    for (int i=0; i<size; i++) 
+    { 
+      heapPermutation(a,size-1,n,list); 
+        if (size%2==1){
+	  int tmp = a[0];
+	  a[0] = a[size-1];
+	  a[size-1] = tmp;
+	} 
+        else{
+	  int tmp = a[i];
+	  a[i] = a[size-1];
+	  a[size-1] = tmp;
+	}
+    } 
+} 
+   
+int main() 
+{
+    int a[] = {1, 2, 3}; 
+    int n = sizeof a/sizeof a[0];
+    struct linkList list =  calloc(1,sizeof(struct linkList));
+    heapPermutation(a, n, n, &list);
+    printf("\n%d\n",list->size);
+    return 0; 
+} 
