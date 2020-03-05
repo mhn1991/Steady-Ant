@@ -8,11 +8,12 @@ typedef struct node{
   //int *data[];
   //next pointer to next element
   struct node* next;
-  int *data[];
+  int *data;
 } node;
 
 typedef struct list{
-  node * head;
+  node *head;
+  int size;
 } list;
 
 // --- Functions ---
@@ -59,7 +60,7 @@ int get(list * l, unsigned int index);
  * Returns 0 for successful termination and -1 in case of errors.
  *
  */
-int prepend(list * l, int *data[]);
+int prepend(list * l, int *data);
 
 /*
  * Function to append a new element to the list.
@@ -72,7 +73,7 @@ int prepend(list * l, int *data[]);
  * Returns 0 for successful termination and -1 in case of errors.
  *
  */
-int append(list * l, int *data[]);
+int append(list * l, int *data);
 
 /*
  * Function to insert a new element to the list.
@@ -86,7 +87,7 @@ int append(list * l, int *data[]);
  * Returns 0 for successful termination and -1 in case of errors.
  *
  */
-int insert(list * l, unsigned int index, int *data[]);
+int insert(list * l, unsigned int index, int *data);
 
 /*
  * Function to delete an existing element from the list.

@@ -22,13 +22,13 @@ int get(list * l, unsigned int index){
 
   //return element
   if(current != NULL){
-    return current->data;
+    return *current->data;
   }else{
     return -1;
   }
 }
 
-int prepend(list * l, int *data[]){
+int prepend(list * l, int *data){
   assert(l != NULL);
   //allocate memory
   node* new = (node*)malloc(sizeof(struct node));
@@ -40,10 +40,11 @@ int prepend(list * l, int *data[]){
 
   //prepend element
   l->head = new;
+  l->size = l->size + 1;
   return 0;
 }
 
-int append(list * l, int *data[]){
+int append(list * l, int *data){
   assert(l != NULL);
   
   //goto end of list
@@ -68,7 +69,7 @@ int append(list * l, int *data[]){
   }else{
     l->head = new;
   }
-  
+  l->size = l->size + 1;
   return 0;
 }
 
@@ -110,7 +111,7 @@ int remove_element(list * l, unsigned int index){
   return 0;
 }
 
-int insert(list * l, unsigned int index, int *data[]){
+int insert(list * l, unsigned int index, int *data){
   assert(l != NULL);
   //basic case
   if(l->head == NULL && index == 0){
@@ -142,6 +143,7 @@ int insert(list * l, unsigned int index, int *data[]){
   assert(previous != NULL);
   previous->next = new;
   new->next = current;
+  l->size = l->size + 1;
   return 0;
 }
 
@@ -167,6 +169,7 @@ void print_list(list * l){
 void init(list * l){
   assert(l != NULL);
   l->head = NULL;
+  l->size = 0;
 }
 
 void destroy(list *l){

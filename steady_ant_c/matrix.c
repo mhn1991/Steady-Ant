@@ -1,49 +1,51 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-//#include "linkedlist.h"
+#include "linkedlist.h"
 
-void printArr(int a[],int n) 
+void printArr(int *a,int n) 
 { 
-    for (int i=0; i<n; i++) 
-      printf("%d ",a[i]); 
+  for (int i=0; i<n; i++){ 
+      printf("%d ",a[i]);
+  }
     printf("\n"); 
 } 
   
 // Generating permutation using Heap Algorithm 
-void heapPermutation(int a[], int size, int n) 
+void heapPermutation(int *a, int size, int n,list *l) 
 {
-    if (size == 1) 
+  if (size == 1) 
     {
-      
-      //printf("%d",j);
-        printArr(a, n); 
-        return; 
+      append(l,a); 
+      return; 
     } 
-  
-    for (int i=0; i<size; i++) 
+    
+  for (int i=0; i<size; i++) 
     { 
-      heapPermutation(a,size-1,n); 
-        if (size%2==1){
-	  int tmp = a[0];
-	  a[0] = a[size-1];
-	  a[size-1] = tmp;
-	} 
-        else{
-	  int tmp = a[i];
-	  a[i] = a[size-1];
-	  a[size-1] = tmp;
-	}
+      heapPermutation(a,size-1,n,l); 
+      if (size%2==1){
+	int tmp = a[0];
+	a[0] = a[size-1];
+	a[size-1] = tmp;
+      } 
+      else{
+	int tmp = a[i];
+	a[i] = a[size-1];
+	a[size-1] = tmp;
+      }
     } 
 } 
    
 int main() 
 {
-    int a[] = {1, 2, 3}; 
-    int n = sizeof a/sizeof a[0];
-    //list l;
-    //init(&l);
-    heapPermutation(a, n, n);
-    //printf("\n%d\n",list->size);
-    return 0; 
+  int *a = calloc(3,sizeof(int));
+  for(int i=1;i<3;i++){
+    a[i] = i;
+  }
+  list l;
+  init(&l);
+  heapPermutation(a, 3, 3,&l);
+  printArr(l.head->data,3);
+  printf("\n%d\n",l.size);
+  return 0; 
 } 
