@@ -3,6 +3,23 @@
 
 #include "linkedlist.h"
 
+
+typedef struct matrixCell{
+  int isBlue;
+  int value;
+}Cell;
+
+
+typedef struct permutationMatrix{
+  // we will need it for steady ant algorithm
+  int isBlue;
+  int *matrix;
+  int size;
+}Matrix;
+
+
+
+
 void printArr(int *a,int n) 
 { 
   for (int i=0; i<n; i++){ 
