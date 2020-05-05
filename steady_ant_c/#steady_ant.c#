@@ -77,7 +77,6 @@ Cell * crossDifference(Cell * array,int n){
 }
 
 // min plus multiplication
-
 // O(n^3)
 
 Cell * minPlusMultiplication(Cell * array1,Cell * array2,int n){
