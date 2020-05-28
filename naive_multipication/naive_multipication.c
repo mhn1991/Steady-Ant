@@ -101,21 +101,25 @@ Cell * minPlusMultiplication(Cell * array1,Cell * array2,int n){
 int main() 
 {
   //Cell *red= calloc(9,sizeof(Cell));
-  Cell *red  = calloc(6*6, sizeof(Cell));
-  Cell *blue = calloc(6*6, sizeof(Cell));
+  Cell *red  = calloc(5*5, sizeof(Cell));
+  Cell *blue = calloc(5*5, sizeof(Cell));
   Cell redCell = {0,1};
   Cell blueCell = {1,1};
-  // slide 20 example
-  red[getIndex(0,1,6)] = red[getIndex(1,2,6)] = red[getIndex(2,4,6)] = red[getIndex(3,0,6)]= red[getIndex(4,5,6)]=red[getIndex(5,3,6)] = redCell;
-  printMatrix(red,6);
+  // this is the slide 20 example semi_talk.pdf
+  //red[getIndex(0,1,6)] = red[getIndex(1,2,6)] = red[getIndex(2,4,6)] = red[getIndex(3,0,6)]= red[getIndex(4,5,6)]=red[getIndex(5,3,6)] = redCell;
+  //red[getIndex(0,3,4)] = red[getIndex(1,0,4)] = red[getIndex(2,2,4)] = red[getIndex(3,1,4)] = redCell;
+  red[getIndex(0,0,5)] = red[getIndex(1,2,5)] = red[getIndex(2,4,5)] = red[getIndex(3,1,5)] = red[getIndex(4,3,5)] = redCell;
+  printMatrix(red,5);
   //printf("##############################################\n");
-  blue[getIndex(0,3,6)] = blue[getIndex(1,0,6)] = blue[getIndex(2,1,6)] = blue[getIndex(3,4,6)] = blue[getIndex(4,5,6)] = blue[getIndex(5,2,6)] = blueCell;
-  printMatrix(blue,6);
+  //blue[getIndex(0,3,6)] = blue[getIndex(1,0,6)] = blue[getIndex(2,1,6)] = blue[getIndex(3,4,6)] = blue[getIndex(4,5,6)] = blue[getIndex(5,2,6)] = blueCell;
+  //blue[getIndex(0,1,4)] = blue[getIndex(1,2,4)] = blue[getIndex(2,0,4)] = blue[getIndex(3,3,4)] = blueCell;
+  blue[getIndex(0,1,5)] = blue[getIndex(1,2,5)] = blue[getIndex(2,0,5)] = blue[getIndex(3,4,5)] = blue[getIndex(4,3,5)] = blueCell; 
+  printMatrix(blue,5);
   //printf("##############################################\n");
-  Cell * dRed = dominanceSum(red,6);
-  Cell * dBlue = dominanceSum(blue,6);
-  Cell * multi = minPlusMultiplication(dRed,dBlue,7);
-  crossDifference(multi,7);
+  Cell * dRed = dominanceSum(red,5);
+  Cell * dBlue = dominanceSum(blue,5);
+  Cell * multi = minPlusMultiplication(dRed,dBlue,6);
+  crossDifference(multi,6);
   //crossDifference(minPlusMultipication(dominanceSum(red,6),dominanceSum(blue,6),7),7);
   //red[1] = red[3] = red[8] = redCell;
   //printMatrix(red,3);
