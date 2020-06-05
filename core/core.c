@@ -6,15 +6,11 @@
 #define Red 1
 #define Blue 2
 #define Green 3
-//#define White 0
+
 
 typedef struct flag{
   unsigned int val:2;
 }Flag;
-
-// 0 means red
-// 1 means blue
-// 2 means green
 
 typedef struct cell{
   int sc;
@@ -43,7 +39,7 @@ void check(Sparse *r,Ant *a){
   for(int k = 0 ; k < size; k++){
     // check we are not out of array for red
     if((i + k + 1) < r->size){
-      //printf("i:%d k:%d color:%d\n",(i+k+1),k,r->fc[i+k+1].isBlue);
+      printf("i:%d k:%d color:%d\n",(i+k+1),k,r->fc[i+k+1].isBlue);
       if( r->fc[i+k+1].isBlue == Red && r->fc[i+k+1].sc >= j){
 	a->red +=1;
       }
@@ -129,6 +125,7 @@ void ant(Sparse *r){
     
     //r->fc[i].isBlue = White;
   }
+  free(changed);
 }
 
 void coloring(Sparse *p, Sparse *q,int i,int color){
@@ -296,28 +293,29 @@ void testAnt2(){
 }
 
 void testCheck(){
-  Cell first  = {1,1};
-  Cell second = {0,1};
-  Cell third  = {2,0};
-  Cell * i = calloc(4,sizeof(Cell));
+  Cell first  = {1,Blue};
+  Cell second = {0,Blue};
+  Cell third  = {2,Red};
+  Cell * i = calloc(3,sizeof(Cell));
   
   Sparse r;
-  r.size = 4;
-  i[1] = first; 
-  i[2] = second;
-  i[3] = third;
+  r.size = 3;
+  i[0] = first; 
+  i[1] = second;
+  i[2] = third;
   r.fc = i;
   Ant a = {0,2,0,0};
-  //check(&r,&a);
-  ant(&r);
-  //printf("Red: %d\nBlue:%d\n",a.red,a.blue);
+  printR(&r);
+  check(&r,&a);
+  //ant(&r);
+  printf("Red: %d\nBlue:%d\n",a.red,a.blue);
 }
 
 
 void main(void){
   //testCheck();
   //testMulti3();
-  testMulti2();
-  //testMulti5();
+  //testMulti2();
+  testMulti5();
   //testAnt2();
 }

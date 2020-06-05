@@ -1,0 +1,15 @@
+\documentclass[a4paper,12pt]{report}
+
+\usepackage[a4paper]{}
+
+\begin{document}
+\title{Steady Ant Algorithm}
+\author{Mohammad Hossein Nouriyan}
+\maketitle
+
+\chapter{Steady Ant Algorithm Implementation}
+\section{Data Structure}
+Steady Ant Algorithm works on permutation matrices, the simplest way to represent permutation matrices is using a two-dimensional array. Because in our algorithm zero cells are not essential So, by storing all cells (zero and non-zero cells) we are wasting our resources and As we know the number of non-zero cells are less than zero cells in permutation matrices. Hence best candidate data structure to store our cells could be sparse matrices. For example, in a 1000 X 1000 permutation matrix, if we use sparse matrice, we will have 1000 cells. Still, in normal matrices, we should store one million cells, as we can see the size of our sparse matrix is 0.1 percent of a regular two-dimensional array, and we don't need to store the rest of the cells.
+
+
+\end{document}
