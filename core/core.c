@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
-
-
+#include "core.h"
+/*
 #define White 0 
 #define Red 1
 #define Blue 2
@@ -28,6 +28,7 @@ typedef struct ant{
   int blue;
   int red;
 }Ant;
+*/
 
 // O(n)
 void check(Sparse *r,Ant *a){
