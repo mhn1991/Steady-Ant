@@ -14,6 +14,7 @@ typedef struct flag{
 typedef struct cell{
   int sc;
   unsigned int isBlue:2;
+  unsigned int type:1;
 }Cell;
 
 typedef struct sparse{
